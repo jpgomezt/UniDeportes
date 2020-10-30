@@ -16,7 +16,7 @@ class RegistrationController extends Controller
     {
         $this->validate(request(), [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|regex:/[a-zA-Z0-9]+@eafit.edu.co/',
             'password' => 'required'
         ]);
 
