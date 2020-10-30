@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Followed_Sport extends Model
 {
+    public $timestamps = false;
     //
 }
