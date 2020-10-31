@@ -32,12 +32,4 @@ class User extends Authenticatable
     protected $attributes = [
         'picture_url' => 'images/defaultProfilePic.jpg',
     ];
-    
-    /**
-     * Add a mutator to ensure hashed passwords
-     */
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = bcrypt($password);
-    }
 }
