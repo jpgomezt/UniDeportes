@@ -14,24 +14,17 @@ use Illuminate\Support\Facades\DB;
 
 class ManageFollowedSportsController extends Controller
 {
-    public function checkFollowedSports()
+    public function checkUnfollowedSports()
     {
-        $followedSports = DB::table('sports AS t1')
-            ->join('followed__sports AS t2', 't2.followed_sport_id', '=', 't1.id')
-            ->join('users AS t3', 't2.user_id', '=', 't3.id')->get();
-        if ($followedSports->count() == Sport::all()->count()) {
-            $errMessage = "En tu lista ya agregaste todos los deportes disponibles";
-            return \view('home.add_followed_sports', compact('errMessage'));
-        }
-        if ($followedSports->count() == 0) {
-            $unfollowSports = Sport::all();
-            return \view('home.add_followed_sports', compact('unfollowSports'));
-        }
-        $unfollowSports = DB::table('sports AS t1')
-            ->select('t1.id','t1.sport_name')
+        $unfollowedSports = DB::table('sports AS t1')
+            ->select('t1.id', 't1.sport_name')
             ->leftJoin('followed__sports AS t2', 't2.followed_sport_id', '=', 't1.id')
             ->whereNull('t2.followed_sport_id')->get();
-        return \view('home.add_followed_sports', compact('unfollowSports', 'followedSports'));
+        if ($unfollowedSports->count() == 0) {
+            $errMessage = "En tu lista ya agregaste todos los deportes disponibles";
+            return \view('home.add_unfollowed_sports', compact('errMessage'));
+        }
+        return \view('home.add_unfollowed_sports', compact('unfollowedSports'));
     }
 
     public function addSports(Request $request)
@@ -47,19 +40,17 @@ class ManageFollowedSportsController extends Controller
         }
     }
 
-    public function checkUnfollowedSports()
+    public function checkFollowedSports()
     {
         $followedSports = DB::table('sports AS t1')
+            ->select('t1.id','t1.sport_name')
             ->join('followed__sports AS t2', 't2.followed_sport_id', '=', 't1.id')
             ->join('users AS t3', 't2.user_id', '=', 't3.id')->get();
         if ($followedSports->count() == 0) {
-            $unfollowSports = Sport::all();
-            return \view('home.add_followed_sports', compact('unfollowSports'));
+            $errMessage = "No tienes agregado ningun deporte en tu lista";
+            return \view('home.delete_followed_sports', compact('errMessage'));
         }
-        $unfollowSports = DB::table('sports AS t1')
-            ->leftJoin('followed__sports AS t2', 't2.followed_sport_id', '=', 't1.id')
-            ->whereNull('t2.followed_sport_id')->get();
-        return \view('home.add_followed_sports', compact('unfollowSports', 'followedSports'));
+        return \view('home.delete_followed_sports', compact('followedSports'));
     }
 
     public function deleteSports(Request $request)
@@ -67,10 +58,7 @@ class ManageFollowedSportsController extends Controller
         $sports = Sport::all();
         foreach ($sports as $sport) {
             if (isset($request[$sport->id])) {
-                Followed_Sport::create([
-                    'user_id' => Auth::user()->id,
-                    'followed_sport_id' => $sport->id,
-                ]);
+                Followed_Sport::where('user_id', Auth::user()->id)->where('followed_sport_id', $sport->id)->delete();
             }
         }
     }

@@ -6,12 +6,12 @@
             {{ $errMessage }}
         </p>
     @else
-        <form method="POST" action="{{ url('agregar') }}">
-            <p>Deportes que puedes añadir a tu lista de visualizacion:<br />
+        <form method="POST" action="{{ url('eliminar') }}">
+            <p>Deportes que puedes eliminar de tu lista de visualizacion:<br />
                 @csrf
-                @foreach ($unfollowSports as $unfollowSport)
-                    <input type="checkbox" name="{{ $unfollowSport->id }}">
-                    {{ $unfollowSport->sport_name }}<br>
+                @foreach ($followedSports as $followedSport)
+                    <input type="checkbox" name="{{ $followedSport->id }}">
+                    {{ $followedSport->sport_name }}<br>
                 @endforeach
                 <input type="submit" value="Agregar">
             </p>

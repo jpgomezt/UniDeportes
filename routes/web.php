@@ -21,6 +21,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/agregar-deportes', 'ManageFollowedSportsController@checkFollowedSports')->name('agregar-deportes');
+Route::get('/agregar-deportes', 'ManageFollowedSportsController@checkUnfollowedSports')->name('agregar-deportes');
 
 Route::post('/agregar', 'ManageFollowedSportsController@addSports');
+
+Route::get('/eliminar-deportes', 'ManageFollowedSportsController@checkFollowedSports')->name('eliminar-deportes');
+
+Route::post('/eliminar', 'ManageFollowedSportsController@deleteSports');
