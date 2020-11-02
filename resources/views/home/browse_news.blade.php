@@ -1,6 +1,6 @@
 @extends('layouts.app')
-<link rel="stylesheet" href="{{ asset('style/browseNews.css') }}">
 @section('content')
+    <link rel="stylesheet" href="{{ asset('style/browseNews.css') }}">
     <h1>Noticias</h1>
     <form method="POST" action="{{ url('leer-noticia') }}">
         @csrf

@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\DB;
 
 class Followed_SportController extends Controller
 {
+
+    public function seeSports()
+    {
+        return \view('home.edit_followed_sports');
+    }
+
     public function checkUnfollowedSports()
     {
         $unfollowedSports = DB::table('sports AS t1')

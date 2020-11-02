@@ -1,6 +1,6 @@
 @extends('layouts.app')
-<link rel="stylesheet" href="{{ asset('style/verification.css') }}">
 @section('content')
+    <link rel="stylesheet" href="{{ asset('style/verification.css') }}">
     @if (isset($errMessage))
         <p>
             {{ $errMessage }}
