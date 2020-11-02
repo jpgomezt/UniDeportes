@@ -17,10 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register', 'RegistrationController@create');
-
-Route::post('register', 'RegistrationController@store');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/agregar-deportes', 'ManageFollowedSportsController@checkFollowedSports')->name('agregar-deportes');
+
+Route::post('/agregar', 'ManageFollowedSportsController@addSports');
