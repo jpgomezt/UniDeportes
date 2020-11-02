@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 
 
-class ManageFollowedSportsController extends Controller
+class Followed_SportController extends Controller
 {
     public function checkUnfollowedSports()
     {
