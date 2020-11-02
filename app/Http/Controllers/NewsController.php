@@ -20,11 +20,13 @@ class NewsController extends Controller
 
     public function newsIFollow()
     {
+        $userID = Auth::user()->id;
         $allNews = DB::table('news AS t1')
             ->select('t1.id', 't1.title', 't4.sport_name', 't1.writer', 't1.content')
             ->join('followed__sports AS t2', 't2.followed_sport_id', '=', 't1.sport_id_tag')
             ->join('users AS t3', 't2.user_id', '=', 't3.id')
-            ->join('sports AS t4', 't4.id', '=', 't1.sport_id_tag')->get();
+            ->join('sports AS t4', 't4.id', '=', 't1.sport_id_tag')
+            ->where('t3.id', $userID)->get();
         return \view('home.browse_news', compact('allNews'));
     }
 

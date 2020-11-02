@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = 'agregar-deportes';
 
     /**
      * Create a new controller instance.
