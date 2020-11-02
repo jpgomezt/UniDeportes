@@ -28,3 +28,11 @@ Route::post('/agregar', 'Followed_SportController@addSports');
 Route::get('/eliminar-deportes', 'Followed_SportController@checkFollowedSports')->name('eliminar-deportes');
 
 Route::post('/eliminar', 'Followed_SportController@deleteSports');
+
+Route::get('/elegir-noticias', 'NewsController@chooseNewsType')->name('elegir-noticias');
+
+Route::get('/mis-noticias', 'NewsController@newsIFollow')->name('mis-noticias');
+
+Route::get('/todas-las-noticias', 'NewsController@allNews')->name('todas-las-noticias');
+
+Route::post('/leer-noticia', 'NewsController@showNews');

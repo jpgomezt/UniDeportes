@@ -5,10 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Followed_Sport;
 use App\Sport;
-use App\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 
 
@@ -43,7 +40,7 @@ class Followed_SportController extends Controller
     public function checkFollowedSports()
     {
         $followedSports = DB::table('sports AS t1')
-            ->select('t1.id','t1.sport_name')
+            ->select('t1.id', 't1.sport_name')
             ->join('followed__sports AS t2', 't2.followed_sport_id', '=', 't1.id')
             ->join('users AS t3', 't2.user_id', '=', 't3.id')->get();
         if ($followedSports->count() == 0) {

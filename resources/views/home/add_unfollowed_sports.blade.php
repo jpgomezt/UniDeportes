@@ -7,8 +7,8 @@
         </p>
     @else
         <form method="POST" action="{{ url('agregar') }}">
+            @csrf
             <p>Deportes que puedes añadir a tu lista de visualizacion:<br />
-                @csrf
                 @foreach ($unfollowedSports as $unfollowedSport)
                     <input type="checkbox" name="{{ $unfollowedSport->id }}">
                     {{ $unfollowedSport->sport_name }}<br>
