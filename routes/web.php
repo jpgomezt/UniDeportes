@@ -38,3 +38,9 @@ Route::get('/mis-noticias', 'NewsController@newsIFollow')->name('mis-noticias');
 Route::get('/todas-las-noticias', 'NewsController@allNews')->name('todas-las-noticias');
 
 Route::post('/leer-noticia', 'NewsController@showNews');
+
+Route::get('/ver-calendario', 'MatchController@showMatches')->name('ver-calendario');
+
+Route::post('/ver-partido', 'MatchController@showMatch');
+
+Route::post('/prediccion', 'MatchController@storePrediction');
