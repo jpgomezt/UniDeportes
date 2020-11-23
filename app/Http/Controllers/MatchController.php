@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Match;
 use App\User_Prediction;
+use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Laravel\Ui\Presets\React;
@@ -49,6 +50,6 @@ class MatchController extends Controller
         $match = Match::where('id', $request['matchID'])->first();
         $prediction = User_Prediction::where('user_id', Auth::user()->id)
             ->where('match_id', $match->id)->first();
-        return \view('home.see_match', compact('match', 'prediction'));
+        return redirect('/ver-partido');
     }
 }

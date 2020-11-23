@@ -13,7 +13,7 @@
                     <input type="checkbox" name="{{ $followedSport->id }}">
                     {{ $followedSport->sport_name }}<br>
                 @endforeach
-                <input type="submit" value="Agregar">
+                <input class="btn btn-lg btn-primary btn-block" type="submit" value="Agregar">
             </p>
         </form>
     @endif
