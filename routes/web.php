@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Mail\WelcomeMail;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
+Route::get('/welcome-mail', 'MailController@sendWelcomeMail')->name('welcome-mail');
 
 Auth::routes();
 
