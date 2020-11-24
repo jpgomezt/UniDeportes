@@ -44,3 +44,9 @@ Route::get('/ver-calendario', 'MatchController@showMatches')->name('ver-calendar
 Route::post('/ver-partido', 'MatchController@showMatch');
 
 Route::post('/prediccion', 'MatchController@storePrediction');
+
+Route::get('/perfil', 'UserController@showProfile')->name('perfil');
+
+Route::post('/check-upload', 'UserController@store');
+
+Route::post('/deporte','SportController@showSport');

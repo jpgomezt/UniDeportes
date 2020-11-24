@@ -43,6 +43,9 @@
                     <i class="fas fa-sign-out-alt"></i>{{ __(' Logout') }}
                 </a>
             </form>
+            <a href="{{ route('perfil') }}"><i class="fas fa-user-cog"></i></i>
+                {{ __(' Perfil') }}
+            </a>
             <a href="{{ route('elegir-noticias') }}"><i class="far fa-newspaper"></i>
                 {{ __(' Noticias') }}
             </a>
