@@ -18,8 +18,8 @@ class CreateMatchesTable extends Migration
             $table->date('match_date');
             $table->foreignId('sport_id');
             $table->string('rival_university');
-            $table->string('score');
-            $table->string('result');
+            $table->string('score')->nullable();
+            $table->string('result')->nullable();
             $table->integer('votes_in_favor');
             $table->integer('votes_against');
         });

@@ -18,6 +18,7 @@ class CreateSportsTable extends Migration
             $table->string('sport_name')->unique();
             $table->string('team_name');
             $table->string('coach_name');
+            $table->string('sport_img');
         });
     }
 
