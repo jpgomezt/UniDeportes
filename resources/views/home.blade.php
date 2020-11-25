@@ -1,23 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <h1 style="text-align: center">
+        UniDeportes
+    </h1>
+    <hr>
+    <p style="text-align: center; font-size: large; margin-bottom: 80px">
+        En la plataforma podras encontrar los distintos equipos de la universidad, y podras agregarlos a tu lista. Podras ver
+        sus Nombre, entrenador y alineaciones, ademas de ver el calendario deportivo de los deportes que sigues y estar
+        enterado de la actualidad y noticias que rodean a los diferentes equipos de la universidad.
+    </p>
 @endsection

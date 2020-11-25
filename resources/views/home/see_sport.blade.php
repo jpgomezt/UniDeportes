@@ -1,13 +1,15 @@
 @extends('layouts.app')
 @section('content')
-    <h1>{{ $sport->team_name }}</h1>
-    <h2>Deporte: {{ $sport->sport_name }}</h2>
+    <link rel="stylesheet" href="{{ asset('style/seeSport.css') }}">
+    <h1 class="h1"><strong>{{ $sport->team_name }}</strong></h1>
+    <h2 class="h2">{{ $sport->sport_name }}</h2>
+    <img class="img" src="{{ $sport->sport_img }}">
+    <h2 style="text-align: center; font-size:50px">Alineacion</h2>
     <h2>Coach: {{ $sport->coach_name }}</h2>
-    <img src="{{ $sport->sport_img }}" style="justify-content: center; display: flex;">
+    <hr>
     @foreach ($players as $player)
-        <p>{{ $player->name}}</p>
-        <p>{{ $player->position}}</p>
-        <p>{{ $player->team_number}}</p>
+        <p style="font-size: 20px">{{ $player->name }} | <i class="fas fa-tshirt"></i> {{ $player->team_number }}
+        <p style="font-size: 15px">{{ $player->position }}</p>
         <hr>
     @endforeach
 @endsection

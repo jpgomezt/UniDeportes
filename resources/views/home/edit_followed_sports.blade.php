@@ -1,24 +1,27 @@
 @extends('layouts.app')
 @section('content')
     <link rel="stylesheet" href="{{ asset('style/editSports.css') }}">
-    <h2>Configuracion</h2>
+    <h2 style="font-size: xx-large">Configuracion</h2>
     <p>Puede editar los deportes que tienes agregados a tu lista:<br /></p>
-    <a href="agregar-deportes"> Agregar Deportes a tu Lista</a> <br />
-    <a href="eliminar-deportes"> Eliminar Deportes de tu Lista</a>
+    <a class="sport" href="agregar-deportes"> Agregar Deportes a tu Lista</a> <br />
+    <a class="sport" href="eliminar-deportes"> Eliminar Deportes de tu Lista</a>
     <hr>
-    <h2>Deportes</h2>
-
     <form method="POST" action="{{ url('deporte') }}">
         @csrf
+        <h2 style="font-size: xx-large">Deportes Disponibles</h2>
+        <p>Estos son los deportes disponibles en la plataforma:<br /></p>
         @foreach ($sports as $sport)
             <button class="sport" type="submit" name="sport" value="{{ $sport->id }}">
                 {{ $sport->sport_name }}
             </button><br />
         @endforeach
+        <hr>
+        <h2 style="font-size: xx-large">Deportes Seguidos</h2>
+        <p>Estos son los deportes que actualmente estan en tu lista:<br /></p>
+        @foreach ($followedSports as $followedSport)
+            <button class="sport" type="submit" name="sport" value="{{ $followedSport->id }}">
+                {{ $followedSport->sport_name }}
+            </button><br />
+        @endforeach
     </form>
-    <hr>
-    <h2>Deportes Seguidos</h2>
-    @foreach ($followedSports as $followedSport)
-        <p>{{ $followedSport->sport_name }}</p>
-    @endforeach
 @endsection

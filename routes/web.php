@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,17 +14,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-use App\Mail\WelcomeMail;
-
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-
-Route::get('/welcome-mail', 'MailController@sendWelcomeMail')->name('welcome-mail');
+Route::get('/', function(){
+    return view('home');
+});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/welcome-mail', 'MailController@sendWelcomeMail')->name('welcome-mail');
 
 Route::get('/ver-deportes', 'Followed_SportController@seeSports')->name('ver-deportes');
 
@@ -43,6 +43,8 @@ Route::get('/todas-las-noticias', 'NewsController@allNews')->name('todas-las-not
 Route::post('/leer-noticia', 'NewsController@showNews');
 
 Route::get('/ver-calendario', 'MatchController@showMatches')->name('ver-calendario');
+
+Route::get('/partidos-pasados', 'MatchController@showPastMatches')->name('partidos-pasados');
 
 Route::post('/ver-partido', 'MatchController@showMatch');
 
